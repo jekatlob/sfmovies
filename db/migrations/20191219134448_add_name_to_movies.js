@@ -1,6 +1,6 @@
 'use strict';
 
-exports.up = function (Knex) {
+exports.up = (Knex) => {
   return Knex.schema.table('movies', (table) => {
     table.text('name');
   })
@@ -9,7 +9,7 @@ exports.up = function (Knex) {
   });
 };
 
-exports.down = function (Knex) {
+exports.down = (Knex) => {
   return Knex.schema.table('movies', (table) => {
     table.dropColumn('name');
   })
