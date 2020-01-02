@@ -20,7 +20,7 @@ describe('movies integration', () => {
     });
 
   });
-
+/*
   describe('find', () => {
 
     it('returns all movies', () => {
@@ -40,15 +40,15 @@ describe('movies integration', () => {
       })
       .then((response) => {
         expect(response.statusCode).to.eql(200);
-        const movies = new Movie().fetchAll();
-        movies.then(values => {
+        //const movies = new Movie().fetchAll();
+        //movies.then(values => {
           //console.log(values);
-          values.forEach(movie => console.log(movie.serialize()));
-        });
+          //values.forEach(movie => console.log(movie.serialize()));
+        //});
         //console.log(response);
       });
     });
 
   });
-
+*/
 });
