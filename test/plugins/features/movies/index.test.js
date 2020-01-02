@@ -1,6 +1,7 @@
 'use strict';
 
 const Movies = require('../../../../lib/server');
+const Movie  = require('../../../../lib/models/movie');
 
 describe('movies integration', () => {
 
@@ -39,6 +40,12 @@ describe('movies integration', () => {
       })
       .then((response) => {
         expect(response.statusCode).to.eql(200);
+        const movies = new Movie().fetchAll();
+        movies.then(values => {
+          //console.log(values);
+          values.forEach(movie => console.log(movie.serialize()));
+        });
+        //console.log(response);
       });
     });
 
