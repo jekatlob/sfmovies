@@ -4,7 +4,6 @@ const Factory = require('rosie').Factory;
 const Knex    = require('../../../../lib/libraries/knex');
 
 const Controller = require('../../../../lib/plugins/features/movies/controller');
-const Movie      = require('../../../../lib/models/movie');
 
 const MovieFactory = Factory.define('movie')
 .attr('id', 1)
@@ -28,9 +27,9 @@ describe('movie controller', () => {
   describe('read', () => {
 
     it('lists all movies', async () => {
-      const testMovie1 = MovieFactory.build({ id: Math.round(new Date().getTime()/1000), name: 'Armageddon', release_year: 1998 });
-      await new Promise(r => setTimeout(r, 1000));
-      const testMovie2 = MovieFactory.build({ id: Math.round(new Date().getTime()/1000), name: 'Deep Impact', release_year: 1998 });
+      const testMovie1 = MovieFactory.build({ id: Math.round(new Date().getTime() / 1000), name: 'Armageddon', release_year: 1998 });
+      await new Promise((r) => setTimeout(r, 1000));
+      const testMovie2 = MovieFactory.build({ id: Math.round(new Date().getTime() / 1000), name: 'Deep Impact', release_year: 1998 });
       const oldMovies = await Controller.find();
       const oldCount = oldMovies.length;
 
