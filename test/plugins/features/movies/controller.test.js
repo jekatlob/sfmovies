@@ -28,15 +28,18 @@ describe('movie controller', () => {
   describe('read', () => {
 
     it('lists all movies', async () => {
-      const testMovie1 = MovieFactory.build({ id: 1, name: 'Armageddon', release_year: 1998 });
-      const testMovie2 = MovieFactory.build({ id: 2, name: 'Deep Impact', release_year: 1998 });
+      const testMovie1 = MovieFactory.build({ id: Math.round(new Date().getTime()/1000), name: 'Armageddon', release_year: 1998 });
+      await new Promise(r => setTimeout(r, 1000));
+      const testMovie2 = MovieFactory.build({ id: Math.round(new Date().getTime()/1000), name: 'Deep Impact', release_year: 1998 });
+      const oldMovies = await Controller.find();
+      const oldCount = oldMovies.length;
 
       return Knex('movies').insert([testMovie1, testMovie2])
       .then(() => {
         return Controller.find();
       })
       .then((movies) => {
-        expect(movies.keys().length()).to.eql(2);
+        expect(movies.length - oldCount).to.eql(2);
       });
     });
 
