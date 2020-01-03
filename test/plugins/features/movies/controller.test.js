@@ -11,7 +11,7 @@ const MovieFactory = Factory.define('movie')
 .attr('release_year', '1929');
 
 beforeEach(() => {
-  return Knex.raw(`DELETE FROM movies;`);
+  return Knex.raw('DELETE FROM movies;');
 });
 
 describe('movie controller', () => {
