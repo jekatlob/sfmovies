@@ -22,13 +22,13 @@ describe('movies integration', () => {
 
   describe('find', () => {
 
-    it('returns all movies', () => {
-      Movies.inject({
+    it('returns all movies', async () => {
+      await Movies.inject({
         url: '/movies',
         method: 'POST',
         payload: { name: 'Armageddon' }
       });
-      Movies.inject({
+      await Movies.inject({
         url: '/movies',
         method: 'POST',
         payload: { name: 'Deep Impact' }
